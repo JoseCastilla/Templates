@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+    ============================================================
+    PLANTILLA BASE - THANK YOU PAGE PARA WEBINAR
+    ============================================================
+    REGLA PRINCIPAL:
+    - SOLO editar el bloque CONFIG.
+    - NO cambiar estructura HTML, clases, animaciones ni jerarquía.
+    - Esta plantilla fue pensada para reutilizarse con distintos clientes.
+    - Si un LLM edita este archivo, debe limitarse únicamente al bloque CONFIG.
+    ============================================================
+  -->
+
+  <title id="pageTitle">Registro Confirmado</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    /*
+      ============================================================
+      ZONA EDITABLE ÚNICA (CONFIG)
+      ============================================================
+      Reemplaza únicamente estos valores para nuevos eventos.
+      ============================================================
+    */
+    const CONFIG = {
+      metaPixelId: 'REEMPLAZAR_PIXEL_ID',
+
+      page: {
+        title: 'Registro Confirmado | NOMBRE DEL CLIENTE'
+      },
+
+      brand: {
+        clientName: 'NOMBRE DEL CLIENTE',
+        hostName: 'NOMBRE DEL HOST',
+        hostPhotoUrl: 'https://TU-IMAGEN-DEL-HOST.com/foto.jpg',
+        copyrightText: '© NOMBRE DEL CLIENTE | NOMBRE DEL EVENTO'
+      },
+
+      event: {
+        name: 'NOMBRE DEL WEBINAR',
+        dateText: 'XX de XXXXX a las 10:00 AM',
+        motivationalQuote: 'Felicidades por tomar acción. Nos vemos el XX de XXXXX a las 10:00 AM para compartir una sesión de alto valor.',
+        supportEmailNotice: 'Te enviamos un correo de respaldo. Revisa tu carpeta de Spam.'
+      },
+
+      links: {
+        zoomUrl: 'https://us02web.zoom.us/j/TU_ENLACE_DE_ZOOM',
+        whatsappGroupUrl: 'https://chat.whatsapp.com/TU_ENLACE_DEL_GRUPO'
+      },
+
+      webinarMode: {
+        isLive: false,
+        liveBannerText: 'Ya estamos en vivo ¡Ingresa Ya!',
+        liveButtonText: 'ENTRAR AHORA AL ZOOM',
+        preLiveBannerText: 'Acción requerida para finalizar tu registro',
+        preLiveBoxTitle: 'Reserva tu acceso en Zoom',
+        preLiveButtonText: 'GUARDAR ENLACE DE ZOOM'
+      },
+
+      whatsapp: {
+        title: 'Únete al Círculo VIP en WhatsApp',
+        buttonText: 'Unirme al Círculo VIP',
+        description: 'Por seguridad, únicamente a través de este grupo enviaremos el enlace privado de Zoom, el material de análisis previo y las instrucciones importantes del evento.',
+        privacyNote: 'Grupo privado. Solo los administradores pueden enviar mensajes.'
+      }
+    };
+  </script>
+
+  <script>
+    (function () {
+      if (!CONFIG.metaPixelId || CONFIG.metaPixelId === 'REEMPLAZAR_PIXEL_ID') return;
+
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', CONFIG.metaPixelId);
+      fbq('track', 'PageView');
+      fbq('track', 'Lead');
+
+      const noscriptImg = document.createElement('img');
+      noscriptImg.height = 1;
+      noscriptImg.width = 1;
+      noscriptImg.style.display = 'none';
+      noscriptImg.src = `https://www.facebook.com/tr?id=${CONFIG.metaPixelId}&ev=PageView&noscript=1`;
+
+      const noScript = document.createElement('noscript');
+      noScript.appendChild(noscriptImg);
+      document.head.appendChild(noScript);
+    })();
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+    }
+
+    @keyframes zoomLivePulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+      }
+      50% {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(37,99,235,0.45);
+      }
+    }
+
+    .zoom-live-btn {
+      animation: zoomLivePulse 1.8s ease-in-out infinite;
+      color: #ffffff !important;
+      text-decoration: none !important;
+    }
+
+    .zoom-live-btn span,
+    .zoom-live-btn svg {
+      color: #ffffff !important;
+      fill: #ffffff !important;
+    }
+  </style>
+</head>
+<body class="antialiased text-slate-800 min-h-screen flex flex-col items-center justify-center">
+
+  <div class="bg-amber-500 w-full py-2.5 px-4 text-center shadow-md fixed top-0 left-0 z-50">
+    <p id="topBannerText" class="text-slate-900 font-bold text-xs sm:text-sm tracking-widest uppercase flex items-center justify-center gap-2">
+      <svg class="w-4 h-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+      </svg>
+      Acción requerida para finalizar tu registro
+    </p>
+  </div>
+
+  <main class="w-full max-w-2xl mx-auto pt-20 pb-10 px-4 sm:px-6 relative z-10 flex-grow flex flex-col justify-center">
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-t-8 border-amber-500 relative">
+
+      <div class="p-6 sm:p-8 border-b border-slate-100 bg-slate-50 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
+        <div class="flex-shrink-0">
+          <img id="hostPhoto"
+               src=""
+               alt="Host del webinar"
+               class="w-20 h-20 rounded-full object-cover border-2 border-slate-200 shadow-sm object-top">
+        </div>
+
+        <div>
+          <span class="inline-block text-slate-500 font-bold tracking-widest uppercase text-[10px] mb-2">Paso 1 Completado</span>
+          <h1 id="heroTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight tracking-tight mb-2">
+            Tu lugar para el evento está reservado.
+          </h1>
+          <p class="text-sm text-slate-600 font-medium">
+            <span id="heroQuote"></span>
+            <br>
+            <span id="heroAuthor" class="font-bold text-slate-800 mt-1 inline-block"></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-10">
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900 mb-5 text-center">
+          Sigue este paso para asegurar tu acceso:
+        </h2>
+
+        <div class="bg-red-50 border-2 border-red-200 rounded-xl p-4 sm:p-6 shadow-sm relative mb-6">
+          <div class="flex items-start gap-3 mb-3 sm:mb-4">
+            <div class="bg-red-500 text-white rounded-full w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0 mt-1 animate-pulse">
+              ●
+            </div>
+
+            <h3 id="zoomBoxTitle" class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+              Reserva tu acceso en Zoom
+            </h3>
+          </div>
+
+          <a id="zoomButton"
+             href="#"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="zoom-live-btn flex w-full items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 font-extrabold text-sm sm:text-lg py-3 sm:py-4 px-4 rounded-lg transition-transform duration-300"
+             style="color:#ffffff !important; text-decoration:none !important;">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+                 fill="#ffffff"
+                 viewBox="0 0 24 24"
+                 aria-hidden="true"
+                 style="display:block;">
+              <path d="M15 10.5V6.75c0-.414-.336-.75-.75-.75h-9a.75.75 0 00-.75.75v10.5c0 .414.336.75.75.75h9a.75.75 0 00.75-.75V13.5l4.125 3c.498.362 1.125.006 1.125-.609V8.109c0-.615-.627-.971-1.125-.609L15 10.5z"/>
+            </svg>
+            <span id="zoomButtonText">GUARDAR ENLACE DE ZOOM</span>
+          </a>
+        </div>
+
+        <div class="bg-white border-2 border-slate-200 rounded-xl p-5 sm:p-6 shadow-sm relative mb-6">
+          <div class="flex items-center gap-3 mb-4 justify-center sm:justify-start">
+            <div class="bg-[#25D366] text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0">2</div>
+            <h3 id="whatsappTitle" class="text-lg font-bold text-slate-900">Únete al Círculo VIP en WhatsApp</h3>
+          </div>
+
+          <a id="whatsappButton"
+             href="#"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="flex w-full items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-base sm:text-lg py-4 px-4 rounded-lg shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-transform duration-300 transform hover:-translate-y-1">
+            <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.895c-.002 2.086.547 4.128 1.594 5.932L0 24l6.399-1.666c1.745.945 3.696 1.444 5.636 1.445h.004c6.58 0 11.939-5.335 11.943-11.896 0-3.172-1.244-6.155-3.462-8.434zM12.045 21.736h-.003c-1.765-.001-3.492-.47-5.006-1.359l-.358-.211-3.719.968.99-3.597-.234-.369c-.98-1.545-1.498-3.328-1.496-5.174.004-5.449 4.46-9.888 9.943-9.888 2.653.002 5.145 1.03 7.02 2.894 1.876 1.865 2.91 4.348 2.909 6.994-.004 5.45-4.46 9.888-9.946 9.888zm5.456-7.397c-.299-.15-1.767-.866-2.04-.966-.271-.099-.47-.15-.668.15-.197.298-.771.966-.944 1.163-.173.198-.347.223-.646.075-.299-.15-1.26-.461-2.4-1.475-.888-.788-1.488-1.761-1.661-2.06-.173-.298-.018-.46.13-.609.134-.133.299-.347.448-.521.149-.173.199-.297.299-.497.099-.198.05-.371-.025-.52-.075-.15-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.199 0-.522.074-.796.372-.274.297-1.045 1.016-1.045 2.477 0 1.461 1.069 2.873 1.218 3.072.149.198 2.095 3.178 5.076 4.451.709.303 1.263.484 1.694.62.712.225 1.36.193 1.872.117.576-.085 1.767-.715 2.016-1.408.249-.693.249-1.288.174-1.408-.075-.12-.274-.194-.573-.343z"/>
+            </svg>
+            <span id="whatsappButtonText">Unirme al Círculo VIP</span>
+          </a>
+
+          <br>
+
+          <p id="whatsappDescription" class="text-sm text-slate-600 mb-6 leading-relaxed text-center sm:text-left">
+            Por seguridad, únicamente a través de este grupo enviaremos información clave del evento.
+          </p>
+
+          <p id="whatsappPrivacyNote" class="text-[11px] text-slate-400 mt-3 text-center flex items-center justify-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+            Grupo privado. Solo los administradores pueden enviar mensajes.
+          </p>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 opacity-60">
+          <div class="bg-slate-200 text-slate-500 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs flex-shrink-0">3</div>
+          <p id="supportEmailNotice" class="text-xs text-slate-500 text-center">
+            Te enviamos un correo de respaldo. Revisa tu carpeta de Spam.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p id="footerCopyright" class="text-center text-slate-500 text-xs mt-6 font-medium">
+      © NOMBRE DEL CLIENTE | NOMBRE DEL EVENTO
+    </p>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.title = CONFIG.page.title;
+      document.getElementById('pageTitle').textContent = CONFIG.page.title;
+
+      document.getElementById('hostPhoto').src = CONFIG.brand.hostPhotoUrl;
+      document.getElementById('hostPhoto').alt = CONFIG.brand.hostName;
+
+      document.getElementById('heroTitle').textContent = `Tu lugar para el evento "${CONFIG.event.name}" está reservado.`;
+      document.getElementById('heroQuote').textContent = `"${CONFIG.event.motivationalQuote}"`;
+      document.getElementById('heroAuthor').textContent = `— ${CONFIG.brand.hostName}`;
+
+      document.getElementById('zoomButton').href = CONFIG.links.zoomUrl;
+      document.getElementById('whatsappButton').href = CONFIG.links.whatsappGroupUrl;
+
+      document.getElementById('whatsappTitle').textContent = CONFIG.whatsapp.title;
+      document.getElementById('whatsappButtonText').textContent = CONFIG.whatsapp.buttonText;
+      document.getElementById('whatsappDescription').textContent = CONFIG.whatsapp.description;
+      document.getElementById('whatsappPrivacyNote').lastChild.textContent = ` ${CONFIG.whatsapp.privacyNote}`;
+      document.getElementById('supportEmailNotice').textContent = CONFIG.event.supportEmailNotice;
+      document.getElementById('footerCopyright').textContent = CONFIG.brand.copyrightText;
+
+      const topBannerText = document.getElementById('topBannerText');
+      const zoomBoxTitle = document.getElementById('zoomBoxTitle');
+      const zoomButtonText = document.getElementById('zoomButtonText');
+
+      if (CONFIG.webinarMode.isLive) {
+        topBannerText.childNodes[topBannerText.childNodes.length - 1].textContent = ` ${CONFIG.webinarMode.liveBannerText}`;
+        zoomBoxTitle.innerHTML = 'Ya estamos en vivo <br class="sm:hidden">¡Ingresa Ya!';
+        zoomButtonText.textContent = CONFIG.webinarMode.liveButtonText;
+      } else {
+        topBannerText.childNodes[topBannerText.childNodes.length - 1].textContent = ` ${CONFIG.webinarMode.preLiveBannerText}`;
+        zoomBoxTitle.textContent = `${CONFIG.webinarMode.preLiveBoxTitle} · ${CONFIG.event.dateText}`;
+        zoomButtonText.textContent = CONFIG.webinarMode.preLiveButtonText;
+      }
+    });
+  </script>
+</body>
+</html>
