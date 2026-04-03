@@ -55,12 +55,6 @@ webinarMode: {
 ```
 Mostrará CTA urgente para entrar al Zoom.
 
-## Recomendación para GitHub
-Guardar estos archivos así:
-
-- `templates/thankyoupage-webinar.html`
-- `templates/README-thankyoupage-webinar.md`
-
 ## Checklist antes de publicar
 - Meta Pixel ID correcto
 - Fecha del evento correcta
